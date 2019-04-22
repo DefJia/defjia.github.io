@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="树莓派填坑之旅我从2016年接触树莓派开始，断断续续一直在使用树莓派，实现一些大大小小的功能，在这里对常见问题作一个汇总。 安装sslocal 先码：树莓派之使用Shadowsocks科学上网 填坑：解决openssl升级到1.1.0后shadowsocks服务报错问题如果文中路径找不到就find /usr -name openssl.py找一下  编码在Linux系统下，cat正常，vim打开乱">
-<meta name="keywords" content="Raspberry, 树莓派, Linux">
+  <meta name="description" content="将树莓派当做OpenVPN服务器并实现校内免流 OpenVPN on Deepin  PiVPN">
+<meta name="keywords" content="Linux, OpenVPN, Raspberry">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Note with Raspberry Pi">
-<meta property="og:url" content="https://tech.defjia.top/Note-with-Raspberry-Pi-kali/index.html">
+<meta property="og:title" content="Deploy-OpenVPN-on-Raspberry-Pi">
+<meta property="og:url" content="https://tech.defjia.top/Deploy-OpenVPN-on-Raspberry-Pi/index.html">
 <meta property="og:site_name" content="Defjia&#39;s Tech Blog">
-<meta property="og:description" content="树莓派填坑之旅我从2016年接触树莓派开始，断断续续一直在使用树莓派，实现一些大大小小的功能，在这里对常见问题作一个汇总。 安装sslocal 先码：树莓派之使用Shadowsocks科学上网 填坑：解决openssl升级到1.1.0后shadowsocks服务报错问题如果文中路径找不到就find /usr -name openssl.py找一下  编码在Linux系统下，cat正常，vim打开乱">
+<meta property="og:description" content="将树莓派当做OpenVPN服务器并实现校内免流 OpenVPN on Deepin  PiVPN">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T12:29:05.730Z">
+<meta property="og:updated_time" content="2019-04-22T12:33:29.234Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Note with Raspberry Pi">
-<meta name="twitter:description" content="树莓派填坑之旅我从2016年接触树莓派开始，断断续续一直在使用树莓派，实现一些大大小小的功能，在这里对常见问题作一个汇总。 安装sslocal 先码：树莓派之使用Shadowsocks科学上网 填坑：解决openssl升级到1.1.0后shadowsocks服务报错问题如果文中路径找不到就find /usr -name openssl.py找一下  编码在Linux系统下，cat正常，vim打开乱">
+<meta name="twitter:title" content="Deploy-OpenVPN-on-Raspberry-Pi">
+<meta name="twitter:description" content="将树莓派当做OpenVPN服务器并实现校内免流 OpenVPN on Deepin  PiVPN">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://tech.defjia.top/Note-with-Raspberry-Pi-kali/"/>
+  <link rel="canonical" href="https://tech.defjia.top/Deploy-OpenVPN-on-Raspberry-Pi/"/>
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Note with Raspberry Pi | Defjia's Tech Blog</title>
+  <title>Deploy-OpenVPN-on-Raspberry-Pi | Defjia's Tech Blog</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tech.defjia.top/Note-with-Raspberry-Pi-kali/"/>
+    <link itemprop="mainEntityOfPage" href="https://tech.defjia.top/Deploy-OpenVPN-on-Raspberry-Pi/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Defjia"/>
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Note with Raspberry Pi
+          <h1 class="post-title" itemprop="name headline">Deploy-OpenVPN-on-Raspberry-Pi
 
               
             
@@ -388,24 +388,12 @@
                 
               
 
-              <time title="创建时间：2017-12-19 09:05:58" itemprop="dateCreated datePublished" datetime="2017-12-19T09:05:58+08:00">2017-12-19</time>
+              <time title="创建时间：2019-04-22 20:28:06 / 修改时间：20:33:29" itemprop="dateCreated datePublished" datetime="2019-04-22T20:28:06+08:00">2019-04-22</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-22 20:29:05" itemprop="dateModified" datetime="2019-04-22T20:29:05+08:00">2019-04-22</time>
               
             
           </span>
@@ -457,13 +445,11 @@
       
 
       
-        <h1 id="树莓派填坑之旅"><a href="#树莓派填坑之旅" class="headerlink" title="树莓派填坑之旅"></a>树莓派填坑之旅</h1><p>我从2016年接触树莓派开始，断断续续一直在使用树莓派，实现一些大大小小的功能，在这里对常见问题作一个汇总。</p>
-<h4 id="安装sslocal"><a href="#安装sslocal" class="headerlink" title="安装sslocal"></a>安装sslocal</h4><ul>
-<li>先码：<a href="http://baoye.me/2016/10/17/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8Shadowsocks%E7%BF%BB%E5%A2%99/" target="_blank" rel="noopener">树莓派之使用Shadowsocks科学上网</a></li>
-<li>填坑：<a href="https://blog.lyz810.com/article/2016/09/shadowsocks-with-openssl-greater-than-110/" target="_blank" rel="noopener">解决openssl升级到1.1.0后shadowsocks服务报错问题</a><br>如果文中路径找不到就find /usr -name openssl.py找一下</li>
-</ul>
-<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><h4 id="在Linux系统下，cat正常，vim打开乱码"><a href="#在Linux系统下，cat正常，vim打开乱码" class="headerlink" title="在Linux系统下，cat正常，vim打开乱码"></a>在Linux系统下，cat正常，vim打开乱码</h4><ul>
-<li><a href="http://blog.csdn.net/m0_37886429/article/details/77836523" target="_blank" rel="noopener">在Linux系统下，cat正常，vim打开乱码</a></li>
+        <h1 id="将树莓派当做OpenVPN服务器并实现校内免流"><a href="#将树莓派当做OpenVPN服务器并实现校内免流" class="headerlink" title="将树莓派当做OpenVPN服务器并实现校内免流"></a>将树莓派当做OpenVPN服务器并实现校内免流</h1><ul>
+<li><p><a href="https://bbs.deepin.org/forum.php?mod=viewthread&amp;action=printable&amp;tid=44379" target="_blank" rel="noopener">OpenVPN on Deepin</a></p>
+</li>
+<li><p><a href="https://github.com/pivpn/pivpn/issues/617" target="_blank" rel="noopener">PiVPN</a></p>
+</li>
 </ul>
 
       
@@ -488,7 +474,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Raspberry-树莓派-Linux/" rel="tag"># Raspberry, 树莓派, Linux</a>
+            <a href="/tags/Linux-OpenVPN-Raspberry/" rel="tag"># Linux, OpenVPN, Raspberry</a>
           
         </div>
       
@@ -501,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/How-to-build-a-hexo-site/" rel="next" title="How to build a hexo site">
-                <i class="fa fa-chevron-left"></i> How to build a hexo site
+              <a href="/About-Wechat-App/" rel="next" title="About-Wechat-App">
+                <i class="fa fa-chevron-left"></i> About-Wechat-App
               </a>
             
           </div>
@@ -510,10 +496,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Tips-of-Git/" rel="prev" title="Tips of Git">
-                Tips of Git <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树莓派填坑之旅"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6811;&#x8393;&#x6D3E;&#x586B;&#x5751;&#x4E4B;&#x65C5;" class="headerlink" title="&#x6811;&#x8393;&#x6D3E;&#x586B;&#x5751;&#x4E4B;&#x65C5;"></a>&#x6811;&#x8393;&#x6D3E;&#x586B;&#x5751;&#x4E4B;&#x65C5;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装sslocal"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;sslocal" class="headerlink" title="&#x5B89;&#x88C5;sslocal"></a>&#x5B89;&#x88C5;sslocal</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x7F16;&#x7801;" class="headerlink" title="&#x7F16;&#x7801;"></a>&#x7F16;&#x7801;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在Linux系统下，cat正常，vim打开乱码"><span class="nav-number">1.1.0.1.</span> <span class="nav-text"><a href="#&#x5728;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;cat&#x6B63;&#x5E38;&#xFF0C;vim&#x6253;&#x5F00;&#x4E71;&#x7801;" class="headerlink" title="&#x5728;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;cat&#x6B63;&#x5E38;&#xFF0C;vim&#x6253;&#x5F00;&#x4E71;&#x7801;"></a>&#x5728;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;cat&#x6B63;&#x5E38;&#xFF0C;vim&#x6253;&#x5F00;&#x4E71;&#x7801;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#将树莓派当做OpenVPN服务器并实现校内免流"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5C06;&#x6811;&#x8393;&#x6D3E;&#x5F53;&#x505A;OpenVPN&#x670D;&#x52A1;&#x5668;&#x5E76;&#x5B9E;&#x73B0;&#x6821;&#x5185;&#x514D;&#x6D41;" class="headerlink" title="&#x5C06;&#x6811;&#x8393;&#x6D3E;&#x5F53;&#x505A;OpenVPN&#x670D;&#x52A1;&#x5668;&#x5E76;&#x5B9E;&#x73B0;&#x6821;&#x5185;&#x514D;&#x6D41;"></a>&#x5C06;&#x6811;&#x8393;&#x6D3E;&#x5F53;&#x505A;OpenVPN&#x670D;&#x52A1;&#x5668;&#x5E76;&#x5B9E;&#x73B0;&#x6821;&#x5185;&#x514D;&#x6D41;</span></a></li></ol></div>
             
 
           </div>
